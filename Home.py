@@ -114,9 +114,9 @@ if selected == "About":
     with st.container():
         col1, col2, col3 = st.columns(3)
         # col1.image('ods.png',width=150)
-        col1.write(":blue[WE WORK REMOTELY]")
-        col2.write("직업 정보 제공 - WE WORK REMOTELY")
-        col3.write("https://weworkremotely.com")
+        col1.write(":blue[TMDB]")
+        col2.write("영화 데이터 제공 - TMDB")
+        col3.write("https://developer.themoviedb.org/docs/getting-started")
 
     st.divider()
 
