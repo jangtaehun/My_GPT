@@ -198,11 +198,11 @@ if openaikey:
     )
 
     with st.sidebar:
-        if st.button("링크 복사"):
-            pyperclip.copy("https://openai.com/sitemap.xml")
-            a = st.success("링크 복사")
-            time.sleep(2)
-            a.empty()
+        # if st.button("링크 복사"):
+        #     pyperclip.copy("https://openai.com/sitemap.xml")
+        #     a = st.success("링크 복사")
+        #     time.sleep(2)
+        #     a.empty()
 
         url = st.text_input(
             "Write down a URL",
