@@ -1,13 +1,13 @@
 import streamlit as st
+from streamlit_option_menu import option_menu
+
 import pickle
 from tmdbv3api import Movie, TMDb
 import os
-import pyperclip
-import time
+
 
 movie = Movie()
 tmdb = TMDb()
-# tmdb.api_key = "8d9d408138b462042279dd8d0f3ef955"
 tmdb.language = "ko-KR"
 
 
@@ -60,39 +60,65 @@ with st.sidebar:
     tmdbkey = None
     tmdbkey = st.text_input("Write Your TMDB API key: ", type="password")
     os.environ["TMDB_API_KEY"] = tmdbkey
-    st.text("example api key: 8d9d408138b462042279dd8d0f3ef955")
-    # with st.sidebar:
-    # if st.button("Example API KEY"):
-    #     pyperclip.copy("8d9d408138b462042279dd8d0f3ef955")
-    #     a = st.success("TMDB API KEY 복사")
-    #     time.sleep(2)
-    #     a.empty()
+    st.text("example: 8d9d408138b462042279dd8d0f3ef955")
 
-st.markdown(
-    """
-        # Movie Recommend
-    """
-)
+    selected = option_menu(
+        "구현 방법",
+        ["영화 추천", "방법", "코드"],
+        icons=["camera-reels", "play-btn", "file-code"],
+        menu_icon="intersect",
+        default_index=0,
+    )
 
 if tmdbkey:
+    if selected == "영화 추천":
+        movie_list = movies["title"].values
 
-    movie_list = movies["title"].values
-    title = st.selectbox("좋아하는 영화를 선택해주세요", movie_list)
+        st.markdown(
+            """
+        # Movie Recommend
+    """
+        )
+        title = st.selectbox(
+            """
+    영화를 선택해주세요. 선택한 영화와 비슷한 영화를 추천해드립니다.
 
-    if st.button("Recommend"):
-        with st.spinner("잠시만 기다려주세요"):
-            images, titles = get_recommendations(title)
+    Avatar는 해당 정보가 TMDb 데이터베이스에 존재하지 않아 오류가 발생합니다.
+            """,
+            movie_list,
+        )
 
-            idx = 0
-            for i in range(0, 2):
-                cols = st.columns(5)
-                for col in cols:
-                    col.image(images[idx])
-                    col.write(titles[idx])
-                    idx += 1
+        if st.button("Recommend"):
+            with st.spinner("잠시만 기다려주세요"):
+                images, titles = get_recommendations(title)
+
+                idx = 0
+                for i in range(0, 2):
+                    cols = st.columns(5)
+                    for col in cols:
+                        col.image(images[idx])
+                        col.write(titles[idx])
+                        idx += 1
+
+    if selected == "방법":
+        st.markdown(
+            """
+        # 영화 추천 시스템 구현 방법
+        """
+        )
+
+    if selected == "코드":
+        st.markdown(
+            """
+        # 전체 코드
+        """
+        )
+
 else:
     st.markdown(
         """
+                # Movie Recommend
+                
                 Welcome to Movie Recommend, choose or write movie name.
 
                 Start by writing TNDB API key in the sidebar.

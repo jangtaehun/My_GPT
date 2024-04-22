@@ -38,7 +38,7 @@ with st.sidebar:
     selected = option_menu(
         "Jang taehun",
         ["Intro", "About"],
-        icons=["play-btn", "search", "info-circle"],
+        icons=["play-btn", "info-circle"],
         menu_icon="intersect",
         default_index=0,
     )
@@ -69,7 +69,7 @@ if selected == "Intro":
     with st.container():
         col1, col2 = st.columns(2)
         with col1:
-            st.subheader("Here are the Data Analysis (soon...):")
+            st.subheader("Here are the Data Analysis:")
             st.markdown(
                 """
         - [ ] [MovieRecommend](/MovieRecommend)
