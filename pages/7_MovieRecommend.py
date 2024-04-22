@@ -2,10 +2,12 @@ import streamlit as st
 import pickle
 from tmdbv3api import Movie, TMDb
 import os
+import pyperclip
+import time
 
 movie = Movie()
 tmdb = TMDb()
-# tmdb.api_key = "dd3249e857ef4f461dd593504b320009"
+# tmdb.api_key = "8d9d408138b462042279dd8d0f3ef955"
 tmdb.language = "ko-KR"
 
 
@@ -66,6 +68,19 @@ st.markdown(
 )
 
 if tmdbkey:
+
+    with st.sidebar:
+        if st.button("Example API KEY"):
+            pyperclip.copy("8d9d408138b462042279dd8d0f3ef955")
+            a = st.success("TMDB API KEY 복사")
+            time.sleep(2)
+            a.empty()
+
+        url = st.text_input(
+            "Write down a URL",
+            placeholder="TMDB API KEY",
+        )
+
     movie_list = movies["title"].values
     title = st.selectbox("좋아하는 영화를 선택해주세요", movie_list)
     if st.button("Recommend"):
