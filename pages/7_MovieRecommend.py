@@ -52,15 +52,12 @@ cosine_sim = pickle.load(open("movie_recommend/cosine_sim2.pickle", "rb"))
 st.set_page_config(
     page_title="movie recommendation",
     page_icon="🎬",
-    # layout="wide",
 )
 
-# tmdb.api_key = "dd3249e857ef4f461dd593504b320009"
 with st.sidebar:
     tmdbkey = None
     tmdbkey = st.text_input("Write Your TMDB API key: ", type="password")
     os.environ["TMDB_API_KEY"] = tmdbkey
-    # tmdb.api_key = tmdbkey
 
 st.markdown(
     """
@@ -69,7 +66,6 @@ st.markdown(
 )
 
 if tmdbkey:
-    # tmdb.api_key = tmdbkey
     movie_list = movies["title"].values
     title = st.selectbox("좋아하는 영화를 선택해주세요", movie_list)
     if st.button("Recommend"):
@@ -87,7 +83,7 @@ else:
     st.markdown(
         """
                 Welcome to Movie Recommend, choose or write movie name.
-                
+
                 Start by writing TNDB API key in the sidebar.
                 """
     )
