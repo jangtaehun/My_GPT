@@ -203,7 +203,7 @@ if openaikey:
         #     a = st.success("링크 복사")
         #     time.sleep(2)
         #     a.empty()
-
+        st.text("example api key: https://openai.com/sitemap.xml")
         url = st.text_input(
             "Write down a URL",
             placeholder="https://example.xml",

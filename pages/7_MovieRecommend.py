@@ -60,7 +60,7 @@ with st.sidebar:
     tmdbkey = None
     tmdbkey = st.text_input("Write Your TMDB API key: ", type="password")
     os.environ["TMDB_API_KEY"] = tmdbkey
-
+    st.text("example api key: 8d9d408138b462042279dd8d0f3ef955")
     # with st.sidebar:
     # if st.button("Example API KEY"):
     #     pyperclip.copy("8d9d408138b462042279dd8d0f3ef955")
