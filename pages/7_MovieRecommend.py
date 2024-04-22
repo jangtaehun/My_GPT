@@ -61,6 +61,13 @@ with st.sidebar:
     tmdbkey = st.text_input("Write Your TMDB API key: ", type="password")
     os.environ["TMDB_API_KEY"] = tmdbkey
 
+    with st.sidebar:
+        if st.button("Example API KEY"):
+            pyperclip.copy("8d9d408138b462042279dd8d0f3ef955")
+            a = st.success("TMDB API KEY 복사")
+            time.sleep(2)
+            a.empty()
+
 st.markdown(
     """
         # Movie Recommend
@@ -69,20 +76,9 @@ st.markdown(
 
 if tmdbkey:
 
-    with st.sidebar:
-        if st.button("Example API KEY"):
-            pyperclip.copy("8d9d408138b462042279dd8d0f3ef955")
-            a = st.success("TMDB API KEY 복사")
-            time.sleep(2)
-            a.empty()
-
-        url = st.text_input(
-            "Write down a URL",
-            placeholder="TMDB API KEY",
-        )
-
     movie_list = movies["title"].values
     title = st.selectbox("좋아하는 영화를 선택해주세요", movie_list)
+
     if st.button("Recommend"):
         with st.spinner("잠시만 기다려주세요"):
             images, titles = get_recommendations(title)
