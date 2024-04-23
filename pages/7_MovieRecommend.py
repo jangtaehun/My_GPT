@@ -70,8 +70,8 @@ with st.sidebar:
         default_index=0,
     )
 
-if tmdbkey:
-    if selected == "영화 추천":
+if selected == "영화 추천":
+    if tmdbkey:
         movie_list = movies["title"].values
 
         st.markdown(
@@ -99,28 +99,26 @@ if tmdbkey:
                         col.image(images[idx])
                         col.write(titles[idx])
                         idx += 1
-
-    if selected == "방법":
+    else:
         st.markdown(
             """
-        # 영화 추천 시스템 구현 방법
-        """
+                    # Movie Recommend
+                    
+                    Welcome to Movie Recommend, choose or write movie name.
+
+                    Start by writing TNDB API key in the sidebar.
+                    """
         )
 
-    if selected == "코드":
-        st.markdown(
-            """
-        # 전체 코드
-        """
-        )
+from analisis import movie
 
-else:
+if selected == "방법":
+    movie.making_code()
+
+
+if selected == "코드":
     st.markdown(
         """
-                # Movie Recommend
-                
-                Welcome to Movie Recommend, choose or write movie name.
-
-                Start by writing TNDB API key in the sidebar.
-                """
+        # 전체 코드
+        """
     )
