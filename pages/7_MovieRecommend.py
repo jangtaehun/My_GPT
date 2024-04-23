@@ -71,12 +71,12 @@ with st.sidebar:
     )
 
 if selected == "영화 추천":
-    with st.sidebar:
+
     tmdbkey = None
     tmdbkey = st.text_input("Write Your TMDB API key: ", type="password")
     os.environ["TMDB_API_KEY"] = tmdbkey
     st.text("example: 8d9d408138b462042279dd8d0f3ef955")
-    
+
     if tmdbkey:
         movie_list = movies["title"].values
 
