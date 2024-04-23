@@ -5,8 +5,9 @@ import pickle
 from tmdbv3api import Movie, TMDb
 import os
 
+from analisis import recommend_code, how_recommend
 
-movie = Movie()
+movie_code = Movie()
 tmdb = TMDb()
 tmdb.language = "ko-KR"
 
@@ -34,7 +35,7 @@ def get_recommendations(title):
     movie_titles = []
     for i in movie_indicies:
         movie_id = movies["id"].iloc[i]
-        details = movie.details(movie_id)
+        details = movie_code.details(movie_id)
 
         image_path = details["poster_path"]
         if image_path:
@@ -116,15 +117,9 @@ if selected == "영화 추천":
                     """
         )
 
-from analisis import movie
-
 if selected == "방법":
-    movie.making_code()
+    how_recommend.recommend()
 
 
 if selected == "코드":
-    st.markdown(
-        """
-        # 전체 코드
-        """
-    )
+    recommend_code.making_code()
