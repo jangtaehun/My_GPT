@@ -118,7 +118,7 @@ if selected == "영화 추천":
         )
 
 if selected == "방법":
-    how_recommend.recommend()
+    how_recommend.recommend_1()
 
 
 if selected == "코드":

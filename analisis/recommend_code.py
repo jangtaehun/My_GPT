@@ -25,8 +25,8 @@ def making_code():
     import pandas as pd
     import numpy as np
     
-    tmdb_credits = pd.read_csv('tmdb_5000_credits.csv)
-    tmdb_movies = pd.read_csv('tmdb_5000_movies.csv)
+    tmdb_credits = pd.read_csv('tmdb_5000_credits.csv')
+    tmdb_movies = pd.read_csv('tmdb_5000_movies.csv')
     
     tmdb_movies = tmdb_movies.merge(tmdb_credits [['id', 'cast', 'crew']], on= 'id')
     
