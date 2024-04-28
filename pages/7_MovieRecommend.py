@@ -86,6 +86,7 @@ if selected == "영화 추천":
         # Movie Recommend
     """
         )
+        st.text("컨텐츠 기반 필터링(Content Based Filtering): 다양한 요소 기반")
         title = st.selectbox(
             """
     영화를 선택해주세요. 선택한 영화와 비슷한 영화를 추천해드립니다.
